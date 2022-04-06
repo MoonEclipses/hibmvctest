@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
@@ -25,7 +26,11 @@
 
         <input type="button" value="Add Customer" onclick="window.location.href='addForm'; return false;"
                class="add-button">
+        <form:form action="search" method="GET">
+            Search customer: <input type="text" name="searchName" />
 
+            <input type="submit" value="Search" class="add-button" />
+        </form:form>
         <table>
             <tr>
                 <th>First name</th>

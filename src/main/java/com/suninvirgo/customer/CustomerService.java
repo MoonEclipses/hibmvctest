@@ -34,4 +34,9 @@ public class CustomerService {
     public void deleteCustomer(int id) {
         customerDAO.deleteCustomer(id);
     }
+
+    @Transactional
+    public List<Customer> searchCustomers(String searchName) {
+        return customerDAO.searchCustomers(searchName);
+    }
 }

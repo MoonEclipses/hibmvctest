@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
+import java.util.Locale;
+
 @Repository
 public class CustomerDAOImpl implements CustomerDAO{
 
@@ -28,7 +30,7 @@ public class CustomerDAOImpl implements CustomerDAO{
     @Override
     public List<Customer> getCustomers() {
         Session session = sessionFactory.getCurrentSession();
-        Query<Customer> query = session.createQuery("from Customer order by lastName", Customer.class);
+        Query<Customer> query = session.createQuery("from Customer order by lastName");
 
         List<Customer> customers = query.getResultList();
         return customers;
@@ -47,5 +49,20 @@ public class CustomerDAOImpl implements CustomerDAO{
         Query query = session.createQuery("delete from Customer where id =:customerId");
         query.setParameter("customerId",id);
         query.executeUpdate();
+    }
+
+    @Override
+    public List<Customer> searchCustomers(String searchName) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query;
+        if (searchName != null && searchName.trim().length()>0){
+            query = session.createQuery("from Customer where lower(firstName) like :name or lower(lastName) like :name order by lastName");
+            query.setParameter("name", "%" + searchName.toLowerCase() + "%");
+        }
+        else {
+            query = session.createQuery("from Customer order by lastName");
+        }
+        List<Customer> customers = query.getResultList();
+        return customers;
     }
 }
