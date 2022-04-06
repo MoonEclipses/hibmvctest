@@ -1,9 +1,6 @@
 package com.suninvirgo.customer;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -11,6 +8,7 @@ import java.util.Objects;
 public class Customer {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name="first_name")
     private String firstName;

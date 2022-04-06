@@ -40,8 +40,9 @@ tr:nth-child(odd) {background: #BBBBBB}
 	font-size: 12px;
 	font-weight: bold;
 	width: 120px; 
-	padding: 5px 10px; 
-	
+	padding: 5px 10px;
+
+	margin-top: 15px;
 	margin-bottom: 15px;
 	background: #cccccc;
 }
