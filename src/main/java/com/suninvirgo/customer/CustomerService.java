@@ -9,17 +9,24 @@ import java.util.List;
 @Service
 public class CustomerService {
     private CustomerDAO customerDAO;
+
     @Autowired
     public CustomerService(CustomerDAO customerDAO) {
         this.customerDAO = customerDAO;
     }
+
     @Transactional
     public void saveCustomer(Customer customer) {
         customerDAO.saveCustomer(customer);
     }
 
     @Transactional
-    public List<Customer> getCustomers(){
+    public List<Customer> getCustomers() {
         return customerDAO.getCustomers();
+    }
+
+    @Transactional
+    public Customer getCustomer(int id) {
+        return customerDAO.getCustomer(id);
     }
 }

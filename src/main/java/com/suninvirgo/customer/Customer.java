@@ -38,6 +38,11 @@ public class Customer {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

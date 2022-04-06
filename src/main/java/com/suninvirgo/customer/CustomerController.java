@@ -33,4 +33,10 @@ public class CustomerController {
         service.saveCustomer(customer);
         return "redirect:/customer/list";
     }
+    @GetMapping("/updateCustomer")
+    public String updateCustomer(@RequestParam("customerId")int id, Model model){
+        Customer customer = service.getCustomer(id);
+        model.addAttribute("customer",customer);
+        return "customer-form";
+    }
 }

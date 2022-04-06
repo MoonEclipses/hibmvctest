@@ -22,7 +22,7 @@ public class CustomerDAOImpl implements CustomerDAO{
     @Override
     public void saveCustomer(Customer customer) {
         Session session = sessionFactory.getCurrentSession();
-        session.save(customer);
+        session.saveOrUpdate(customer);
     }
 
     @Override
@@ -36,13 +36,10 @@ public class CustomerDAOImpl implements CustomerDAO{
 
     @Override
     public Customer getCustomer(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Customer.class,id);
     }
 
-    @Override
-    public void updateCustomer(int id) {
-
-    }
 
     @Override
     public void deleteCustomer(int id) {
