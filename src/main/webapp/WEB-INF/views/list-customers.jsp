@@ -24,7 +24,7 @@
     <div class="content">
 
         <input type="button" value="Add Customer" onclick="window.location.href='addForm'; return false;"
-        class="add-button">
+               class="add-button">
 
         <table>
             <tr>
@@ -38,7 +38,10 @@
                     <td> ${customer.firstName}</td>
                     <td> ${customer.lastName}</td>
                     <td> ${customer.email}</td>
-                    <td><a href="/customer/updateCustomer?customerId=${customer.id}">Update</a></td>
+                    <td>
+                        <a href="/customer/updateCustomer?customerId=${customer.id}">Update</a> |
+                        <a href="/customer/deleteCustomer?customerId=${customer.id}" onclick="if(!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
+                    </td>
                 </tr>
             </c:forEach>
         </table>

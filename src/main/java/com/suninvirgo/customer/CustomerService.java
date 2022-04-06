@@ -29,4 +29,9 @@ public class CustomerService {
     public Customer getCustomer(int id) {
         return customerDAO.getCustomer(id);
     }
+
+    @Transactional
+    public void deleteCustomer(int id) {
+        customerDAO.deleteCustomer(id);
+    }
 }
